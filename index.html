@@ -27,20 +27,11 @@
 <body>
   <!-- Het iframe dat de Power App zal laden -->
   <div id="iframeContainer">
-    <iframe id="powerAppIframe" src="https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01"></iframe>
+    <iframe id="powerAppIframe" 
+            src="https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01" 
+            sandbox="allow-scripts allow-same-origin allow-forms">
+    </iframe>
   </div>
-
-  <script>
-    // Voeg een event listener toe voor navigatiepogingen binnen de iframe
-    document.getElementById('powerAppIframe').onload = function() {
-      var iframeDoc = document.getElementById('powerAppIframe').contentWindow.document;
-      
-      // Voorkom dat links binnen de iframe een nieuw tabblad openen
-      iframeDoc.querySelectorAll('a').forEach(function(link) {
-        link.setAttribute('target', '_self');  // Verzeker dat de link altijd in hetzelfde tabblad opent
-      });
-    };
-  </script>
 </body>
 </html>
 
