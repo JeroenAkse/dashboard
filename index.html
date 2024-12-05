@@ -45,15 +45,15 @@
       });
     };
 
-    // Timer voor inactiviteit (10 seconden)
-    var inactivityTime = 10 * 1000; // 10 seconden in milliseconden
+    // Timer voor inactiviteit (1 uur)
+    var inactivityTime = 60 * 60 * 1000; // 1 uur in milliseconden (3600000 ms)
     var inactivityTimer;
 
     // Reset de timer bij interactie met de pagina of het iframe
     function resetInactivityTimer() {
       clearTimeout(inactivityTimer);
       inactivityTimer = setTimeout(function() {
-        location.reload(); // Laad de pagina opnieuw na 10 seconden inactiviteit
+        location.reload(); // Laad de pagina opnieuw na 1 uur inactiviteit
       }, inactivityTime);
     }
 
@@ -71,4 +71,3 @@
   </script>
 </body>
 </html>
-
