@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard RFC</title>
+  <title>Power App binnen hetzelfde tabblad</title>
   <style>
     body {
       margin: 0;
@@ -49,20 +49,26 @@
     var inactivityTime = 10 * 1000; // 10 seconden in milliseconden
     var inactivityTimer;
 
-    // Reset de timer bij interactie met de pagina
+    // Reset de timer bij interactie met de pagina of het iframe
     function resetInactivityTimer() {
       clearTimeout(inactivityTimer);
       inactivityTimer = setTimeout(function() {
-        location.reload(); // Laad de pagina opnieuw na 10 minuten inactiviteit
+        location.reload(); // Laad de pagina opnieuw na 10 seconden inactiviteit
       }, inactivityTime);
     }
 
-    // Voeg eventlisteners toe voor gebruikersinteractie
+    // Voeg eventlisteners toe voor gebruikersinteractie op de pagina
     document.addEventListener('mousemove', resetInactivityTimer);
     document.addEventListener('keydown', resetInactivityTimer);
+
+    // Voeg eventlisteners toe voor gebruikersinteractie binnen het iframe
+    var iframe = document.getElementById('powerAppIframe');
+    iframe.contentWindow.addEventListener('mousemove', resetInactivityTimer);
+    iframe.contentWindow.addEventListener('keydown', resetInactivityTimer);
 
     // Start de timer bij het laden van de pagina
     resetInactivityTimer();
   </script>
 </body>
 </html>
+
