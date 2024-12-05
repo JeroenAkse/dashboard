@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mijn Pagina</title>
+  <script>
+    function openAndClose() {
+      // Open de link in een nieuw tabblad
+      window.open("https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01?tenantId=7a061f9b-6449-470f-9a68-ae5929da0007&sourcetime=1733385264437", "_blank", "_blank");
+      // Sluit de huidige pagina
+      window.close();
+    }
+  </script>
+</head>
+<body>
+  <h1>Welkom bij dashboard 2.0</h1>
+  <p>Klik op de onderstaande knop om de app te openen.</p>
+  <button onclick="openAndClose()">Open</button>
+</body>
+</html>
