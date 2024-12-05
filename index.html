@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Power App binnen hetzelfde tabblad</title>
   <style>
-    /* Verberg alle tekst en de knop */
     body {
       margin: 0;
       padding: 0;
@@ -32,5 +31,19 @@
             sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
     </iframe>
   </div>
+
+  <script>
+    // Zorg ervoor dat links in de iframe niet naar een nieuw tabblad openen
+    document.getElementById('powerAppIframe').onload = function() {
+      var iframe = document.getElementById('powerAppIframe');
+      var iframeDoc = iframe.contentWindow.document;
+
+      // Verander alle links naar target="_self" zodat ze binnen hetzelfde tabblad openen
+      var links = iframeDoc.querySelectorAll('a');
+      links.forEach(function(link) {
+        link.setAttribute('target', '_self');
+      });
+    };
+  </script>
 </body>
 </html>
