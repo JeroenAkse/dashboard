@@ -3,19 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mijn Pagina</title>
-  <script>
-    function openAndClose() {
-      // Open de link in een nieuw tabblad
-      window.open("https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01?tenantId=7a061f9b-6449-470f-9a68-ae5929da0007&sourcetime=1733385264437", "_blank", "_blank");
-      // Sluit de huidige pagina
-      window.close();
+  <title>Mijn HTML Pagina met Power App</title>
+  <style>
+    /* Styling voor de iframe */
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
     }
-  </script>
+  </style>
 </head>
 <body>
-  <h1>Welkom bij dashboard 2.0</h1>
-  <p>Klik op de onderstaande knop om de app te openen.</p>
-  <button onclick="openAndClose()">Open</button>
+  <h1>Welkom op mijn pagina!</h1>
+  <p>Klik op de onderstaande knop om mijn Power App in deze pagina te openen:</p>
+  
+  <!-- De knop die de Power App in een iframe laadt -->
+  <button onclick="openPowerApp()">Open mijn Power App</button>
+
+  <!-- Het iframe dat de Power App zal laden -->
+  <div id="iframeContainer">
+    <iframe id="powerAppIframe" style="display:none;" src=""></iframe>
+  </div>
+
+  <script>
+    function openPowerApp() {
+      // De URL van je Power App
+      var powerAppURL = "https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01";
+      
+      // Zet de URL van de Power App in het iframe en maak het zichtbaar
+      var iframe = document.getElementById("powerAppIframe");
+      iframe.src = powerAppURL;
+      iframe.style.display = "block";
+    }
+  </script>
 </body>
 </html>
