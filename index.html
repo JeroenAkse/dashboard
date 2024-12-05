@@ -5,36 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mijn HTML Pagina met Power App</title>
   <style>
-    /* Styling voor de iframe */
+    /* Verberg alle tekst en de knop */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #iframeContainer {
+      width: 100%;
+      height: 100vh; /* Zorg ervoor dat de iframe het volledige scherm vult */
+    }
+
     iframe {
       width: 100%;
-      height: 600px;
+      height: 100%;
       border: none;
     }
   </style>
 </head>
 <body>
-  <h1>Welkom op mijn pagina!</h1>
-  <p>Klik op de onderstaande knop om mijn Power App in deze pagina te openen:</p>
-  
-  <!-- De knop die de Power App in een iframe laadt -->
-  <button onclick="openPowerApp()">Open mijn Power App</button>
-
   <!-- Het iframe dat de Power App zal laden -->
   <div id="iframeContainer">
-    <iframe id="powerAppIframe" style="display:none;" src=""></iframe>
+    <iframe id="powerAppIframe" src="https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01"></iframe>
   </div>
-
-  <script>
-    function openPowerApp() {
-      // De URL van je Power App
-      var powerAppURL = "https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01";
-      
-      // Zet de URL van de Power App in het iframe en maak het zichtbaar
-      var iframe = document.getElementById("powerAppIframe");
-      iframe.src = powerAppURL;
-      iframe.style.display = "block";
-    }
-  </script>
 </body>
 </html>
