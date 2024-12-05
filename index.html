@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Power App binnen hetzelfde tabblad</title>
+  <title>Dashboard RFC</title>
   <style>
     body {
       margin: 0;
@@ -24,11 +24,45 @@
   </style>
 </head>
 <body>
-  <!-- Het iframe dat de Power App zal laden zonder sandbox -->
+  <!-- Het iframe dat de Power App zal laden -->
   <div id="iframeContainer">
     <iframe id="powerAppIframe" 
-            src="https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01">
+            src="https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01" 
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
     </iframe>
   </div>
+
+  <script>
+    // Zorg ervoor dat links in de iframe niet naar een nieuw tabblad openen
+    document.getElementById('powerAppIframe').onload = function() {
+      var iframe = document.getElementById('powerAppIframe');
+      var iframeDoc = iframe.contentWindow.document;
+
+      // Verander alle links naar target="_self" zodat ze binnen hetzelfde tabblad openen
+      var links = iframeDoc.querySelectorAll('a');
+      links.forEach(function(link) {
+        link.setAttribute('target', '_self');
+      });
+    };
+
+    // Timer voor inactiviteit (10 seconden)
+    var inactivityTime = 10 * 1000; // 10 seconden in milliseconden
+    var inactivityTimer;
+
+    // Reset de timer bij interactie met de pagina
+    function resetInactivityTimer() {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(function() {
+        location.reload(); // Laad de pagina opnieuw na 10 minuten inactiviteit
+      }, inactivityTime);
+    }
+
+    // Voeg eventlisteners toe voor gebruikersinteractie
+    document.addEventListener('mousemove', resetInactivityTimer);
+    document.addEventListener('keydown', resetInactivityTimer);
+
+    // Start de timer bij het laden van de pagina
+    resetInactivityTimer();
+  </script>
 </body>
 </html>
