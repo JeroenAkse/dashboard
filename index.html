@@ -9,8 +9,8 @@
     body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
       font-family: Arial, sans-serif;
+      overflow-x: auto; /* Sta horizontaal scrollen toe */
     }
 
     /* Stijlen voor de welkomstpagina */
@@ -19,19 +19,20 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-image: url('bedumoverzicht.jpg'); 
+      background-image: url('bedumoverzicht.jpg');
       background-size: cover; 
       background-position: center; 
-      background-repeat: no-repeat; 
+      background-repeat: no-repeat;
       text-align: center;
       flex-direction: column;
+      width: 100%; /* Zorg ervoor dat de pagina zich aanpast aan de breedte van het scherm */
     }
 
     .content-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      transform: translateY(-220%); 
+      transform: translateY(-220%);
     }
 
     .welcome-title {
@@ -79,6 +80,7 @@
       height: 100%;
       border: none;
       touch-action: manipulation; /* Zet touch-events aan voor mobiele apparaten */
+      max-width: 100%; /* Zorg ervoor dat de iframe niet breder is dan het scherm */
     }
   </style>
 </head>
