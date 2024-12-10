@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard RFC</title>
-  <!-- Voeg een favicon toe -->
   <link rel="icon" href="koeicon.png" type="image/png">
   <style>
     body {
@@ -14,20 +13,25 @@
       font-family: Arial, sans-serif;
     }
 
+    /* Stijlen voor de welkomstpagina */
     .welcome-page {
-        Display: flex;
-        justify-content: center;
-        align-items: center;
-         height: 100vh;
-         background: linear-gradient(135deg, #0078d4, #00a4ef); /* Kleurverloop */
-         text-align: center;
-         flex-direction: column;
-}
-
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('bedumoverzicht.jpg'); /* Achtergrondafbeelding */
+      background-size: cover; /* Zorg ervoor dat de afbeelding het volledige scherm bedekt */
+      background-position: center; /* Centreer de afbeelding */
+      background-repeat: no-repeat; /* Voorkom dat de afbeelding wordt herhaald */
+      text-align: center;
+      flex-direction: column;
+    }
 
     .welcome-title {
       font-size: 2rem;
       margin-bottom: 20px;
+      color: white; /* Zorg dat de tekst leesbaar is */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Schaduw voor betere zichtbaarheid */
     }
 
     .button-container {
@@ -36,18 +40,17 @@
     }
 
     .welcome-button {
-        width: 200px; /* Vaste breedte voor alle knoppen */
-        padding: 15px 0; /* Zorg ervoor dat de hoogte consistent is */
-        font-size: 1.2rem;
-        background-color: #0078d4;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        text-align: center;
+      width: 200px;
+      padding: 15px 0;
+      font-size: 1.2rem;
+      background-color: #0078d4;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
     }
-
 
     .welcome-button:hover {
       background-color: #005a9e;
@@ -75,7 +78,7 @@
 
   <!-- Welkomstpagina -->
   <div class="welcome-page" id="welcomePage">
-    <h1 class="welcome-title">Welkom, kies uw werk locatie</h1>
+    <h1 class="welcome-title">Welkom bij het Dashboard</h1>
     <div class="button-container">
       <button class="welcome-button" id="bedumINGButton">Bedum ING</button>
       <button class="welcome-button" id="bedumFRICOButton">Bedum FRICO</button>
