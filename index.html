@@ -27,10 +27,17 @@
       flex-direction: column;
     }
 
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translateY(-20%); /* Verplaats de inhoud 20% omhoog */
+    }
+
     .welcome-title {
-      font-size: 2.5rem; /* Grotere tekstgrootte voor duidelijkheid */
-      color: #ffffff; /* Witte kleur voor contrast met achtergrondafbeelding */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Subtiele schaduw voor betere leesbaarheid */
+      font-size: 2.5rem; 
+      color: #ffffff; 
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
       margin-bottom: 20px;
     }
 
@@ -78,10 +85,12 @@
 
   <!-- Welkomstpagina -->
   <div class="welcome-page" id="welcomePage">
-    <h1 class="welcome-title">Welkom, kies uw locatie</h1> <!-- Toegevoegde welkomsttekst -->
-    <div class="button-container">
-      <button class="welcome-button" id="bedumINGButton">Bedum ING</button>
-      <button class="welcome-button" id="bedumFRICOButton">Bedum FRICO</button>
+    <div class="content-container">
+      <h1 class="welcome-title">Welkom, kies uw locatie</h1> <!-- Welkomsttekst -->
+      <div class="button-container">
+        <button class="welcome-button" id="bedumINGButton">Bedum ING</button>
+        <button class="welcome-button" id="bedumFRICOButton">Bedum FRICO</button>
+      </div>
     </div>
   </div>
 
