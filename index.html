@@ -2,48 +2,42 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard RFC</title>
   <link rel="icon" href="koeicon.png" type="image/png">
   <style>
     body {
       margin: 0;
       padding: 0;
+      overflow: hidden;
       font-family: Arial, sans-serif;
-      overflow-x: auto; /* Sta horizontaal scrollen toe als dat nodig is */
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     /* Stijlen voor de welkomstpagina */
     .welcome-page {
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Zorgt ervoor dat de inhoud bovenaan wordt weergegeven */
-      flex-direction: column;
-      height: 100vh; /* Zorg ervoor dat de pagina de volledige hoogte van het scherm gebruikt */
-      background-image: url('bedumoverzicht.jpg');
+      align-items: center;
+      height: 100vh;
+      background-image: url('bedumoverzicht.jpg'); 
       background-size: cover; 
       background-position: center; 
-      background-repeat: no-repeat;
+      background-repeat: no-repeat; 
       text-align: center;
-      width: 100%;
-      padding-top: 50px; /* Zorg ervoor dat de welkomsttekst niet tegen de bovenkant plakt */
+      flex-direction: column;
     }
 
     .content-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      z-index: 1;
+      transform: translateY(-220%); 
     }
 
     .welcome-title {
-      font-size: 2.5rem;
-      color: #ffffff;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      font-size: 2.5rem; 
+      color: #ffffff; 
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
       margin-bottom: 20px;
     }
 
@@ -74,18 +68,15 @@
       width: 100%;
       height: 100vh;
       display: none; /* De iframe-container is standaard verborgen */
-      position: absolute;
+      position: absolute; /* Positie aanpassen om het iframe over het hele scherm te laten verschijnen */
       top: 0;
       left: 0;
-      overflow: auto;
     }
 
     iframe {
       width: 100%;
       height: 100%;
       border: none;
-      touch-action: manipulation;
-      max-width: 100%;
     }
   </style>
 </head>
@@ -94,7 +85,7 @@
   <!-- Welkomstpagina -->
   <div class="welcome-page" id="welcomePage">
     <div class="content-container">
-      <h1 class="welcome-title">Welkom, kies uw locatie</h1>
+      <h1 class="welcome-title">Welkom, kies uw locatie</h1> <!-- Welkomsttekst -->
       <div class="button-container">
         <button class="welcome-button" id="bedumINGButton">Bedum ING</button>
         <button class="welcome-button" id="bedumFRICOButton">Bedum FRICO</button>
@@ -104,31 +95,39 @@
 
   <!-- Iframe pagina -->
   <div id="iframeContainer">
-    <iframe id="powerAppIframe" src="" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+    <iframe id="powerAppIframe" 
+            src="" 
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+    </iframe>
   </div>
 
   <script>
+    // Selecteer de knoppen
     const bedumINGButton = document.getElementById('bedumINGButton');
     const bedumFRICOButton = document.getElementById('bedumFRICOButton');
     const welcomePage = document.getElementById('welcomePage');
     const iframeContainer = document.getElementById('iframeContainer');
     const powerAppIframe = document.getElementById('powerAppIframe');
 
+    // URL's voor de Power Apps
     const bedumINGURL = 'https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/7bc392ca-6c7f-4ecf-b9da-8d62e90b4a5e?tenantId=7a061f9b-6449-470f-9a68-ae5929da0007&hint=b505556e-9e8c-4198-89d1-86538d608692&source=sharebutton&sourcetime=1733819940381';
     const bedumFRICOURL = 'https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01';
 
+    // Actie bij klikken op "Bedum ING"
     bedumINGButton.addEventListener('click', function() {
-      welcomePage.style.display = 'none';
-      iframeContainer.style.display = 'block';
-      powerAppIframe.src = bedumINGURL;
+      welcomePage.style.display = 'none'; // Verberg de welkomstpagina
+      iframeContainer.style.display = 'block'; // Toon de iframe-pagina
+      powerAppIframe.src = bedumINGURL; // Zet de iframe naar de gewenste URL
     });
 
+    // Actie bij klikken op "Bedum FRICO"
     bedumFRICOButton.addEventListener('click', function() {
-      welcomePage.style.display = 'none';
-      iframeContainer.style.display = 'block';
-      powerAppIframe.src = bedumFRICOURL;
+      welcomePage.style.display = 'none'; // Verberg de welkomstpagina
+      iframeContainer.style.display = 'block'; // Toon de iframe-pagina
+      powerAppIframe.src = bedumFRICOURL; // Zet de iframe naar de gewenste URL
     });
 
+    // Zorg ervoor dat links in de iframe niet naar een nieuw tabblad openen
     powerAppIframe.onload = function() {
       var iframeDoc = powerAppIframe.contentWindow.document;
 
@@ -138,7 +137,8 @@
       });
     };
 
-    var inactivityTime = 24 * 60 * 60 * 1000; // 24 uur
+    // Timer voor inactiviteit (24 uur)
+    var inactivityTime = 24 * 60 * 60 * 1000; // 24 uur in milliseconden (86.400.000 ms)
     var inactivityTimer;
 
     function resetInactivityTimer() {
