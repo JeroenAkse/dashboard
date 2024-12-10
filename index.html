@@ -11,11 +11,49 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
+      font-family: Arial, sans-serif;
     }
 
+    /* Stijlen voor de welkomstpagina */
+    .welcome-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .welcome-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .welcome-button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background-color: #0078d4;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .welcome-button:hover {
+      background-color: #005a9e;
+    }
+
+    /* Stijlen voor de iframe pagina */
     #iframeContainer {
       width: 100%;
-      height: 100vh; /* Zorg ervoor dat de iframe het volledige scherm vult */
+      height: 100vh;
     }
 
     iframe {
@@ -23,10 +61,25 @@
       height: 100%;
       border: none;
     }
+
+    /* Verberg de iframe-pagina standaard */
+    #iframeContainer {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <!-- Het iframe dat de Power App zal laden -->
+
+  <!-- Welkomstpagina -->
+  <div class="welcome-page" id="welcomePage">
+    <h1 class="welcome-title">Welkom bij het Dashboard</h1>
+    <div class="button-container">
+      <button class="welcome-button" id="bedumINGButton">Bedum ING</button>
+      <button class="welcome-button" id="bedumFRICOButton">Bedum FRICO</button>
+    </div>
+  </div>
+
+  <!-- Iframe pagina -->
   <div id="iframeContainer">
     <iframe id="powerAppIframe" 
             src="https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01" 
@@ -35,6 +88,23 @@
   </div>
 
   <script>
+    // Selecteer de knoppen
+    const bedumINGButton = document.getElementById('bedumINGButton');
+    const bedumFRICOButton = document.getElementById('bedumFRICOButton');
+    const welcomePage = document.getElementById('welcomePage');
+    const iframeContainer = document.getElementById('iframeContainer');
+
+    // Actie bij klikken op "Bedum FRICO"
+    bedumFRICOButton.addEventListener('click', function() {
+      welcomePage.style.display = 'none'; // Verberg de welkomstpagina
+      iframeContainer.style.display = 'block'; // Toon de iframe-pagina
+    });
+
+    // Placeholder-actie voor "Bedum ING"
+    bedumINGButton.addEventListener('click', function() {
+      alert('Bedum ING pagina is nog niet ingesteld.');
+    });
+
     // Zorg ervoor dat links in de iframe niet naar een nieuw tabblad openen
     document.getElementById('powerAppIframe').onload = function() {
       var iframe = document.getElementById('powerAppIframe');
@@ -47,7 +117,7 @@
       });
     };
 
-// Timer voor inactiviteit (24 uur)
+    // Timer voor inactiviteit (24 uur)
     var inactivityTime = 24 * 60 * 60 * 1000; // 24 uur in milliseconden (86.400.000 ms)
     var inactivityTimer;
 
@@ -71,5 +141,6 @@
     // Start de timer bij het laden van de pagina
     resetInactivityTimer();
   </script>
+
 </body>
 </html>
