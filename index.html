@@ -11,29 +11,32 @@
       padding: 0;
       font-family: Arial, sans-serif;
       overflow-x: auto; /* Sta horizontaal scrollen toe als dat nodig is */
-      height: 100vh;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     /* Stijlen voor de welkomstpagina */
     .welcome-page {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* Zorgt ervoor dat de inhoud bovenaan wordt weergegeven */
       flex-direction: column;
-      height: 100%; /* Maak de hoogte 100% van het scherm */
+      height: 100vh; /* Zorg ervoor dat de pagina de volledige hoogte van het scherm gebruikt */
       background-image: url('bedumoverzicht.jpg');
       background-size: cover; 
       background-position: center; 
       background-repeat: no-repeat;
       text-align: center;
       width: 100%;
+      padding-top: 50px; /* Zorg ervoor dat de welkomsttekst niet tegen de bovenkant plakt */
     }
 
     .content-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      transform: translateY(-10%); /* Zorg ervoor dat de inhoud zichtbaar is */
       z-index: 1;
     }
 
