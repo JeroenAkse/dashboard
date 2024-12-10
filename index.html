@@ -31,7 +31,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      transform: translateY(-220%); /* Verplaats de inhoud 80% omhoog */
+      transform: translateY(-220%); /* Verplaats de inhoud omhoog */
     }
 
     .welcome-title {
@@ -109,15 +109,15 @@
     const welcomePage = document.getElementById('welcomePage');
     const iframeContainer = document.getElementById('iframeContainer');
 
+    // Actie bij klikken op "Bedum ING"
+    bedumINGButton.addEventListener('click', function() {
+      window.location.href = 'https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/7bc392ca-6c7f-4ecf-b9da-8d62e90b4a5e?tenantId=7a061f9b-6449-470f-9a68-ae5929da0007&hint=b505556e-9e8c-4198-89d1-86538d608692&source=sharebutton&sourcetime=1733819940381';
+    });
+
     // Actie bij klikken op "Bedum FRICO"
     bedumFRICOButton.addEventListener('click', function() {
       welcomePage.style.display = 'none'; // Verberg de welkomstpagina
       iframeContainer.style.display = 'block'; // Toon de iframe-pagina
-    });
-
-    // Placeholder-actie voor "Bedum ING"
-    bedumINGButton.addEventListener('click', function() {
-      alert('Bedum ING pagina is nog niet ingesteld.');
     });
 
     // Zorg ervoor dat links in de iframe niet naar een nieuw tabblad openen
