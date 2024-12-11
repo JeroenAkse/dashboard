@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Royal Friesland Campina Bedum</title>
+  <title>Dashboard RFC</title>
   <link rel="icon" href="koeicon.png" type="image/png">
   <style>
     body {
@@ -13,7 +13,7 @@
       font-family: Arial, sans-serif;
     }
 
-    /* Stijlen voor de welkomstpagina (desktop) */
+    /* Stijlen voor de welkomstpagina */
     .welcome-page {
       display: flex;
       justify-content: center;
@@ -31,25 +31,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      transform: translateY(-220%); 
     }
 
     .welcome-title {
-      font-size: 2.5rem;
+      font-size: 2.5rem; 
+      color: #ffffff; 
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
       margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
 
     .button-container {
       display: flex;
-      flex-direction: column; /* Knoppen boven elkaar */
       gap: 20px;
-      align-items: center;
     }
 
     .welcome-button {
-      width: 80%;
-      max-width: 300px; /* Maximaal breedte voor de knoppen */
+      width: 200px;
       padding: 15px 0;
       font-size: 1.2rem;
       background-color: #0078d4;
@@ -80,26 +78,6 @@
       height: 100%;
       border: none;
     }
-
-    /* Mobiele weergave - achtergrond zwart en knoppen kleiner */
-    @media (max-width: 600px) {
-      body {
-        background-color: #000; /* Zwarte achtergrond voor mobiele weergave */
-      }
-
-      .welcome-page {
-        background-image: none; /* Verwijder de achtergrondafbeelding op mobiel */
-        background-color: #000; /* Zet zwarte achtergrond op mobiel */
-      }
-
-      .welcome-title {
-        font-size: 1.8rem; /* Kleinere tekst voor mobiele schermen */
-      }
-
-      .welcome-button {
-        font-size: 1rem; /* Kleinere knoppen voor mobiele schermen */
-      }
-    }
   </style>
 </head>
 <body>
@@ -107,7 +85,7 @@
   <!-- Welkomstpagina -->
   <div class="welcome-page" id="welcomePage">
     <div class="content-container">
-      <h1 class="welcome-title">Welkom, kies uw locatie</h1>
+      <h1 class="welcome-title">Welkom, kies uw locatie</h1> <!-- Welkomsttekst -->
       <div class="button-container">
         <button class="welcome-button" id="bedumINGButton">Bedum ING</button>
         <button class="welcome-button" id="bedumFRICOButton">Bedum FRICO</button>
