@@ -98,18 +98,41 @@
       }
 
       .content-container {
-        transform: translateY(0); /* Zet de vertaling terug zodat de knoppen goed gepositioneerd zijn */
+        transform: translateY(-100%); /* Zet de vertaling terug om de tekst hoger te plaatsen */
+      }
+
+      .welcome-title {
+        font-size: 2.5rem; /* Verhoog de tekstgrootte voor 'Welkom' */
+        margin-bottom: 10px; /* Verklein de afstand onder de welkomsttekst */
+      }
+
+      .location-title {
+        font-size: 2rem; /* Verlaag de tekstgrootte voor 'Kies uw locatie' */
+        margin-bottom: 20px; /* Verhoog de ruimte tussen de titel en de knoppen */
       }
 
       .button-container {
-        flex-direction: column; /* Knoppen verticaal uitlijnen op mobiel */
-        gap: 10px; /* Kleinere ruimte tussen knoppen */
-        align-items: center; /* Zet de knoppen in het midden van het scherm */
+        display: flex; /* Zet de knoppen naast elkaar */
+        gap: 20px; /* Ruimte tussen knoppen */
+        justify-content: center; /* Zet de knoppen in het midden */
+        align-items: center;
       }
 
       .welcome-button {
-        width: 80%; /* Knoppen vullen de breedte van het scherm op mobiel */
-        max-width: 250px; /* Maximaliseer de breedte van knoppen voor grote telefoons */
+        width: 45%; /* Knoppen vullen minder breedte zodat ze naast elkaar passen */
+        padding: 15px 0;
+        font-size: 1.2rem;
+        background-color: #0078d4;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
+      }
+
+      .welcome-button:hover {
+        background-color: #005a9e;
       }
     }
   </style>
