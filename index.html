@@ -78,6 +78,26 @@
       height: 100%;
       border: none;
     }
+
+    /* Media Query voor mobiele apparaten */
+    @media (max-width: 600px) {
+      body {
+        background-color: #000; /* Zwarte achtergrond voor mobiel */
+      }
+
+      .welcome-page {
+        background-image: none; /* Geen achtergrondafbeelding voor mobiel */
+      }
+
+      .button-container {
+        flex-direction: column; /* Knoppen verticaal uitlijnen op mobiel */
+        gap: 10px; /* Kleinere ruimte tussen knoppen */
+      }
+
+      .welcome-button {
+        width: 100%; /* Knoppen vullen de breedte van het scherm op mobiel */
+      }
+    }
   </style>
 </head>
 <body>
