@@ -87,15 +87,22 @@
 
       .welcome-page {
         background-image: none; /* Geen achtergrondafbeelding voor mobiel */
+        height: 100vh; /* Zorg ervoor dat de welcome-page de volledige hoogte heeft */
+      }
+
+      .content-container {
+        transform: translateY(0); /* Zet de vertaling terug zodat de knoppen goed gepositioneerd zijn */
       }
 
       .button-container {
         flex-direction: column; /* Knoppen verticaal uitlijnen op mobiel */
         gap: 10px; /* Kleinere ruimte tussen knoppen */
+        align-items: center; /* Zet de knoppen in het midden van het scherm */
       }
 
       .welcome-button {
-        width: 100%; /* Knoppen vullen de breedte van het scherm op mobiel */
+        width: 80%; /* Knoppen vullen de breedte van het scherm op mobiel */
+        max-width: 250px; /* Maximaliseer de breedte van knoppen voor grote telefoons */
       }
     }
   </style>
