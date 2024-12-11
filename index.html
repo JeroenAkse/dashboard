@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard RFC</title>
+  <title>Royal Friesland Campina Bedum</title>
   <link rel="icon" href="koeicon.png" type="image/png">
   <style>
     body {
@@ -38,7 +38,14 @@
       font-size: 2.5rem; 
       color: #ffffff; 
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-      margin-bottom: 20px;
+      margin-bottom: 10px; /* Verkleinen van de afstand tussen de titels */
+    }
+
+    .location-title {
+      font-size: 2rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      margin-bottom: 20px; /* Verhoog de afstand voor de knoppen */
     }
 
     .button-container {
@@ -112,7 +119,8 @@
   <!-- Welkomstpagina -->
   <div class="welcome-page" id="welcomePage">
     <div class="content-container">
-      <h1 class="welcome-title">Welkom, kies uw locatie</h1> <!-- Welkomsttekst -->
+      <h1 class="welcome-title">Welkom</h1> <!-- Welkomsttekst bovenaan -->
+      <h2 class="location-title">Kies uw locatie</h2> <!-- Locatie titel hieronder -->
       <div class="button-container">
         <button class="welcome-button" id="bedumINGButton">Bedum ING</button>
         <button class="welcome-button" id="bedumFRICOButton">Bedum FRICO</button>
