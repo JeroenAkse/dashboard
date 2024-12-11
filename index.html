@@ -67,8 +67,8 @@
     #iframeContainer {
       width: 100%;
       height: 100vh;
-      display: none; /* De iframe-container is standaard verborgen */
-      position: absolute; /* Positie aanpassen om het iframe over het hele scherm te laten verschijnen */
+      display: none; 
+      position: absolute; 
       top: 0;
       left: 0;
     }
@@ -78,6 +78,39 @@
       height: 100%;
       border: none;
     }
+
+    /* Stijlen voor mobiele apparaten */
+    @media (max-width: 768px) {
+      /* Zet achtergrond op zwart en verwijd de knoppen naar onderen */
+      .welcome-page {
+        background-color: #000; /* Zwarte achtergrond op mobiel */
+        background-image: none; /* Verwijder achtergrondafbeelding */
+      }
+
+      .content-container {
+        transform: translateY(0); /* Zet de knoppen naar het midden */
+      }
+
+      .welcome-title {
+        display: none; /* Verberg de welkomsttekst */
+      }
+
+      .button-container {
+        flex-direction: column; /* Zet de knoppen onder elkaar */
+        gap: 10px; /* Verklein de ruimte tussen de knoppen */
+      }
+
+      .sick-button {
+        display: none; /* Verberg de Ziek melden knop zowel op desktop als mobiel */
+      }
+    }
+
+    /* Desktop versie: Verberg Ziek melden knop */
+    @media (min-width: 769px) {
+      .sick-button {
+        display: none; /* Verberg de Ziek melden knop op desktop */
+      }
+    }
   </style>
 </head>
 <body>
@@ -85,26 +118,27 @@
   <!-- Welkomstpagina -->
   <div class="welcome-page" id="welcomePage">
     <div class="content-container">
-      <h1 class="welcome-title">Welkom, kies uw locatie</h1> <!-- Welkomsttekst -->
+      <h1 class="welcome-title">Welkom, kies uw locatie</h1>
       <div class="button-container">
         <button class="welcome-button" id="bedumINGButton">Bedum ING</button>
-        <button class="welcome-button" id="bedumFRICOButton">Bedum FRICO</button>
+        <button class="welcome-button" id="bedumFRICOButton">Bedum Kaas</button>
       </div>
     </div>
   </div>
 
+  <!-- Ziek melden knop (is verborgen op zowel mobiel als desktop) -->
+  <button class="sick-button" id="sickButton">Ziek melden</button>
+
   <!-- Iframe pagina -->
   <div id="iframeContainer">
-    <iframe id="powerAppIframe" 
-            src="" 
-            sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
-    </iframe>
+    <iframe id="powerAppIframe" src="" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
   </div>
 
   <script>
     // Selecteer de knoppen
     const bedumINGButton = document.getElementById('bedumINGButton');
     const bedumFRICOButton = document.getElementById('bedumFRICOButton');
+    const sickButton = document.getElementById('sickButton');
     const welcomePage = document.getElementById('welcomePage');
     const iframeContainer = document.getElementById('iframeContainer');
     const powerAppIframe = document.getElementById('powerAppIframe');
@@ -112,6 +146,7 @@
     // URL's voor de Power Apps
     const bedumINGURL = 'https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/7bc392ca-6c7f-4ecf-b9da-8d62e90b4a5e?tenantId=7a061f9b-6449-470f-9a68-ae5929da0007&hint=b505556e-9e8c-4198-89d1-86538d608692&source=sharebutton&sourcetime=1733819940381';
     const bedumFRICOURL = 'https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01';
+    const ziekMeldenURL = 'https://frieslandcampina.service-now.com/finder?id=sc_cat_item&sys_id=3e79bdea87ef21d041a998ebbbbb3532';
 
     // Actie bij klikken op "Bedum ING"
     bedumINGButton.addEventListener('click', function() {
@@ -125,6 +160,11 @@
       welcomePage.style.display = 'none'; // Verberg de welkomstpagina
       iframeContainer.style.display = 'block'; // Toon de iframe-pagina
       powerAppIframe.src = bedumFRICOURL; // Zet de iframe naar de gewenste URL
+    });
+
+    // Actie bij klikken op "Ziek melden"
+    sickButton.addEventListener('click', function() {
+      window.open(ziekMeldenURL, '_blank'); // Open de link in een nieuw tabblad
     });
 
     // Zorg ervoor dat links in de iframe niet naar een nieuw tabblad openen
