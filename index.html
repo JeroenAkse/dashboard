@@ -38,14 +38,7 @@
       font-size: 2.5rem; 
       color: #ffffff; 
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-      margin-bottom: 10px; /* Verkleinen van de afstand tussen de titels */
-    }
-
-    .location-title {
-      font-size: 2rem;
-      color: #ffffff;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-      margin-bottom: 20px; /* Verhoog de afstand voor de knoppen */
+      margin-bottom: 20px;
     }
 
     .button-container {
@@ -85,56 +78,6 @@
       height: 100%;
       border: none;
     }
-
-    /* Media Query voor mobiele apparaten */
-    @media (max-width: 600px) {
-      body {
-        background-color: #000; /* Zwarte achtergrond voor mobiel */
-      }
-
-      .welcome-page {
-        background-image: none; /* Geen achtergrondafbeelding voor mobiel */
-        height: 100vh; /* Zorg ervoor dat de welcome-page de volledige hoogte heeft */
-      }
-
-      .content-container {
-        transform: translateY(-100%); /* Zet de vertaling terug om de tekst hoger te plaatsen */
-      }
-
-      .welcome-title {
-        font-size: 2.5rem; /* Verhoog de tekstgrootte voor 'Welkom' */
-        margin-bottom: 10px; /* Verklein de afstand onder de welkomsttekst */
-      }
-
-      .location-title {
-        font-size: 2rem; /* Verlaag de tekstgrootte voor 'Kies uw locatie' */
-        margin-bottom: 20px; /* Verhoog de ruimte tussen de titel en de knoppen */
-      }
-
-      .button-container {
-        display: flex; /* Zet de knoppen naast elkaar */
-        gap: 20px; /* Ruimte tussen knoppen */
-        justify-content: center; /* Zet de knoppen in het midden */
-        align-items: center;
-      }
-
-      .welcome-button {
-        width: 45%; /* Knoppen vullen minder breedte zodat ze naast elkaar passen */
-        padding: 15px 0;
-        font-size: 1.2rem;
-        background-color: #0078d4;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        text-align: center;
-      }
-
-      .welcome-button:hover {
-        background-color: #005a9e;
-      }
-    }
   </style>
 </head>
 <body>
@@ -142,8 +85,7 @@
   <!-- Welkomstpagina -->
   <div class="welcome-page" id="welcomePage">
     <div class="content-container">
-      <h1 class="welcome-title">Welkom</h1> <!-- Welkomsttekst bovenaan -->
-      <h2 class="location-title">Kies uw locatie</h2> <!-- Locatie titel hieronder -->
+      <h1 class="welcome-title">Welkom, kies uw locatie</h1> <!-- Welkomsttekst -->
       <div class="button-container">
         <button class="welcome-button" id="bedumINGButton">Bedum ING</button>
         <button class="welcome-button" id="bedumFRICOButton">Bedum FRICO</button>
