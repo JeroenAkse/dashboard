@@ -19,25 +19,32 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-image: url('bedumoverzicht.jpg'); 
-      background-size: cover; 
-      background-position: center; 
-      background-repeat: no-repeat; 
       text-align: center;
       flex-direction: column;
+    }
+
+    /* Video-achtergrond voor desktop */
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* Zorg ervoor dat de video achter de content blijft */
     }
 
     .content-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      transform: translateY(-220%); 
+      transform: translateY(-220%);
     }
 
     .welcome-title {
-      font-size: 2.5rem; 
-      color: #ffffff; 
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+      font-size: 2.5rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
       margin-bottom: 20px;
     }
 
@@ -67,8 +74,8 @@
     #iframeContainer {
       width: 100%;
       height: 100vh;
-      display: none; 
-      position: absolute; 
+      display: none;
+      position: absolute;
       top: 0;
       left: 0;
     }
@@ -81,39 +88,47 @@
 
     /* Stijlen voor mobiele apparaten */
     @media (max-width: 768px) {
-      /* Zet achtergrond op zwart en verwijd de knoppen naar onderen */
       .welcome-page {
         background-color: #000; /* Zwarte achtergrond op mobiel */
-        background-image: none; /* Verwijder achtergrondafbeelding */
+        background-image: url('bedumoverzicht.jpg'); /* Statische achtergrondafbeelding voor mobiel */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
       }
 
       .content-container {
-        transform: translateY(0); /* Zet de knoppen naar het midden */
+        transform: translateY(0);
       }
 
       .welcome-title {
-        display: none; /* Verberg de welkomsttekst */
+        display: none;
       }
 
       .button-container {
-        flex-direction: column; /* Zet de knoppen onder elkaar */
-        gap: 10px; /* Verklein de ruimte tussen de knoppen */
+        flex-direction: column;
+        gap: 10px;
       }
 
       .sick-button {
-        display: none; /* Verberg de Ziek melden knop zowel op desktop als mobiel */
+        display: none;
       }
     }
 
     /* Desktop versie: Verberg Ziek melden knop */
     @media (min-width: 769px) {
       .sick-button {
-        display: none; /* Verberg de Ziek melden knop op desktop */
+        display: none;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Video-achtergrond alleen zichtbaar op desktop -->
+  <video class="video-background" autoplay loop muted playsinline>
+    <source src="koeieninwei.mp4" type="video/mp4">
+    Je browser ondersteunt geen HTML5-video.
+  </video>
 
   <!-- Welkomstpagina -->
   <div class="welcome-page" id="welcomePage">
@@ -126,16 +141,13 @@
     </div>
   </div>
 
-  <!-- Ziek melden knop (is verborgen op zowel mobiel als desktop) -->
   <button class="sick-button" id="sickButton">Ziek melden</button>
 
-  <!-- Iframe pagina -->
   <div id="iframeContainer">
     <iframe id="powerAppIframe" src="" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
   </div>
 
   <script>
-    // Selecteer de knoppen
     const bedumINGButton = document.getElementById('bedumINGButton');
     const bedumFRICOButton = document.getElementById('bedumFRICOButton');
     const sickButton = document.getElementById('sickButton');
@@ -143,57 +155,48 @@
     const iframeContainer = document.getElementById('iframeContainer');
     const powerAppIframe = document.getElementById('powerAppIframe');
 
-    // URL's voor de Power Apps
     const bedumINGURL = 'https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/7bc392ca-6c7f-4ecf-b9da-8d62e90b4a5e?tenantId=7a061f9b-6449-470f-9a68-ae5929da0007&hint=b505556e-9e8c-4198-89d1-86538d608692&source=sharebutton&sourcetime=1733819940381';
     const bedumFRICOURL = 'https://apps.powerapps.com/play/e/default-7a061f9b-6449-470f-9a68-ae5929da0007/a/8b00bcce-5dba-4a73-846d-65eae4ec6b01';
     const ziekMeldenURL = 'https://frieslandcampina.service-now.com/finder?id=sc_cat_item&sys_id=3e79bdea87ef21d041a998ebbbbb3532';
 
-    // Actie bij klikken op "Bedum ING"
     bedumINGButton.addEventListener('click', function() {
-      welcomePage.style.display = 'none'; // Verberg de welkomstpagina
-      iframeContainer.style.display = 'block'; // Toon de iframe-pagina
-      powerAppIframe.src = bedumINGURL; // Zet de iframe naar de gewenste URL
+      welcomePage.style.display = 'none';
+      iframeContainer.style.display = 'block';
+      powerAppIframe.src = bedumINGURL;
     });
 
-    // Actie bij klikken op "Bedum FRICO"
     bedumFRICOButton.addEventListener('click', function() {
-      welcomePage.style.display = 'none'; // Verberg de welkomstpagina
-      iframeContainer.style.display = 'block'; // Toon de iframe-pagina
-      powerAppIframe.src = bedumFRICOURL; // Zet de iframe naar de gewenste URL
+      welcomePage.style.display = 'none';
+      iframeContainer.style.display = 'block';
+      powerAppIframe.src = bedumFRICOURL;
     });
 
-    // Actie bij klikken op "Ziek melden"
     sickButton.addEventListener('click', function() {
-      window.open(ziekMeldenURL, '_blank'); // Open de link in een nieuw tabblad
+      window.open(ziekMeldenURL, '_blank');
     });
 
-    // Zorg ervoor dat links in de iframe niet naar een nieuw tabblad openen
     powerAppIframe.onload = function() {
       var iframeDoc = powerAppIframe.contentWindow.document;
-
       var links = iframeDoc.querySelectorAll('a');
       links.forEach(function(link) {
         link.setAttribute('target', '_self');
       });
     };
 
-    // Timer voor inactiviteit (24 uur)
-    var inactivityTime = 24 * 60 * 60 * 1000; // 24 uur in milliseconden (86.400.000 ms)
+    var inactivityTime = 24 * 60 * 60 * 1000;
     var inactivityTimer;
 
     function resetInactivityTimer() {
       clearTimeout(inactivityTimer);
       inactivityTimer = setTimeout(function() {
-        location.reload(); // Laad de pagina opnieuw na 24 uur inactiviteit
+        location.reload();
       }, inactivityTime);
     }
 
     document.addEventListener('mousemove', resetInactivityTimer);
     document.addEventListener('keydown', resetInactivityTimer);
-
     powerAppIframe.contentWindow.addEventListener('mousemove', resetInactivityTimer);
     powerAppIframe.contentWindow.addEventListener('keydown', resetInactivityTimer);
-
     resetInactivityTimer();
   </script>
 
