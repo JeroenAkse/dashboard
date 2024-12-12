@@ -23,7 +23,7 @@
       flex-direction: column;
     }
 
-    /* Video-achtergrond voor desktop met fade-in/out effect */
+    /* Video-achtergrond voor desktop zonder animatie maar met overgang via JavaScript */
     .video-background {
       position: fixed;
       top: 0;
@@ -33,26 +33,7 @@
       object-fit: cover;
       z-index: -1;
       opacity: 1;
-      animation: fadeEffect 10s ease-in-out infinite;
-    }
-
-    /* Fade-in en fade-out animatie */
-    @keyframes fadeEffect {
-      0% {
-        opacity: 1;
-      }
-      45% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-      55% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 1;
-      }
+      transition: opacity 1s ease-in-out; /* Fade-in en fade-out overgang via CSS */
     }
 
     .content-container {
@@ -219,6 +200,22 @@
     powerAppIframe.contentWindow.addEventListener('mousemove', resetInactivityTimer);
     powerAppIframe.contentWindow.addEventListener('keydown', resetInactivityTimer);
     resetInactivityTimer();
+
+    // Selecteer de video
+    const videoBackground = document.querySelector('.video-background');
+
+    // Voeg een eventlistener toe voor het "ended" evenement van de video
+    videoBackground.addEventListener('ended', function() {
+      // Wanneer de video is afgelopen, start de fade-out en fade-in animatie
+      videoBackground.style.opacity = 0;
+      setTimeout(function() {
+        // Wacht een moment totdat de fade-out is voltooid, en start de fade-in
+        videoBackground.style.opacity = 1;
+      }, 1000); // 1 seconde wachten voordat de fade-in begint
+    });
+
+    // Zorg ervoor dat de video automatisch opnieuw begint
+    videoBackground.play();
   </script>
 
 </body>
