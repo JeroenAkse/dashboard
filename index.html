@@ -23,7 +23,7 @@
       flex-direction: column;
     }
 
-    /* Video-achtergrond voor desktop zonder animatie maar met overgang via JavaScript */
+    /* Video-achtergrond voor desktop zonder animatie */
     .video-background {
       position: fixed;
       top: 0;
@@ -32,8 +32,6 @@
       height: 100%;
       object-fit: cover;
       z-index: -1;
-      opacity: 1;
-      transition: opacity 1s ease-in-out; /* Fade-in en fade-out overgang via CSS */
     }
 
     .content-container {
@@ -127,7 +125,7 @@
 <body>
 
   <!-- Video-achtergrond alleen zichtbaar op desktop -->
-  <video class="video-background" autoplay loop muted playsinline>
+  <video class="video-background" id="videoBackground" autoplay muted playsinline>
     <source src="koeieninwei.mp4" type="video/mp4">
     Je browser ondersteunt geen HTML5-video.
   </video>
@@ -202,20 +200,13 @@
     resetInactivityTimer();
 
     // Selecteer de video
-    const videoBackground = document.querySelector('.video-background');
+    const videoBackground = document.getElementById('videoBackground');
 
     // Voeg een eventlistener toe voor het "ended" evenement van de video
     videoBackground.addEventListener('ended', function() {
-      // Wanneer de video is afgelopen, start de fade-out en fade-in animatie
-      videoBackground.style.opacity = 0;
-      setTimeout(function() {
-        // Wacht een moment totdat de fade-out is voltooid, en start de fade-in
-        videoBackground.style.opacity = 1;
-      }, 1000); // 1 seconde wachten voordat de fade-in begint
+      // Zodra de video is afgelopen, start de video opnieuw
+      videoBackground.play(); // Speel de video opnieuw af
     });
-
-    // Zorg ervoor dat de video automatisch opnieuw begint
-    videoBackground.play();
   </script>
 
 </body>
