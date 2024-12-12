@@ -23,7 +23,7 @@
       flex-direction: column;
     }
 
-    /* Video-achtergrond voor desktop */
+    /* Video-achtergrond voor desktop met fade-in/out effect */
     .video-background {
       position: fixed;
       top: 0;
@@ -31,7 +31,28 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: -1; /* Zorg ervoor dat de video achter de content blijft */
+      z-index: -1;
+      opacity: 1;
+      animation: fadeEffect 10s ease-in-out infinite;
+    }
+
+    /* Fade-in en fade-out animatie */
+    @keyframes fadeEffect {
+      0% {
+        opacity: 1;
+      }
+      45% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      55% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+      }
     }
 
     .content-container {
