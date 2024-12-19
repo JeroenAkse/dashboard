@@ -119,6 +119,25 @@
         display: none;
       }
     }
+
+    /* Voeg de nieuwe button toe aan de linkerbovenhoek */
+    #volumesBedumFricoButton {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #ff6f61;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #volumesBedumFricoButton:hover {
+      background-color: #d14c42;
+    }
   </style>
 </head>
 <body>
@@ -141,6 +160,9 @@
   </div>
 
   <button class="sick-button" id="sickButton">Ziek melden</button>
+
+  <!-- Nieuwe button Volumes Bedum Frico linksboven -->
+  <button id="volumesBedumFricoButton" onclick="window.open('https://app.powerbi.com/groups/me/reports/25337dc3-2fdd-467e-9862-c661eeedc2b2/ReportSection?language=nl&experience=power-bi', '_blank')">Volumes Bedum Frico</button>
 
   <div id="iframeContainer">
     <iframe id="powerAppIframe" src="" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
